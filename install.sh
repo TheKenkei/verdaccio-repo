@@ -363,3 +363,5 @@ xhr2 \
 xng-breadcrumb \
 yargs \
 zone.js;
+
+rm -rf node_modules package-lock.json ./.cache; 
