@@ -1,6 +1,6 @@
-rm -rf node_modules package-lock.json ; 
+rm -rf node_modules package-lock.json ./.cache; 
 
-npm install --force --legacy-peer-deps
+npm install --force --legacy-peer-deps --cache ./.cache
 @actions/core \
 @actions/github \
 @ag-grid-community/client-side-row-model \
@@ -26,6 +26,10 @@ npm install --force --legacy-peer-deps
 @angular/platform-server \
 @angular/router \
 @angular/ssr \
+@asymmetrik/leaflet-d3 \
+@asymmetrik/ngx-leaflet  \
+@asymmetrik/ngx-leaflet-d3 \
+@asymmetrik/ngx-leaflet-markercluster \
 @babel/cli \
 @babel/core \
 @babel/generator \
@@ -41,6 +45,9 @@ npm install --force --legacy-peer-deps
 @bazel/runfiles \
 @bazel/terser \
 @bazel/worker \
+@bluehalo/ngx-leaflet \
+@bluehalo/ngx-leaflet-draw \
+@bluehalo/ngx-leaflet-markercluster \
 @codemirror/autocomplete \
 @codemirror/commands \
 @codemirror/lang-angular \
@@ -72,6 +79,8 @@ npm install --force --legacy-peer-deps
 @ng-web-apis/mutation-observer \
 @ng-web-apis/universal \
 @nginfra/angular-linking \
+@ngx-translate/core \
+@ngx-translate/http-loader \
 @nx/angular \
 @nx/eslint \
 @nx/jest \
@@ -103,11 +112,14 @@ npm install --force --legacy-peer-deps
 @taiga-ui/cspell-config \
 @taiga-ui/design-tokens \
 @taiga-ui/editor \
-@taiga-ui/experimental \
 @taiga-ui/eslint-plugin-experience \
 @taiga-ui/eslint-plugin-experience-next \
 @taiga-ui/event-plugins \
+@taiga-ui/experimental \
+@taiga-ui/i18n \
 @taiga-ui/icons \
+@taiga-ui/icons-fontawesome \
+@taiga-ui/icons-material \
 @taiga-ui/jest-config \
 @taiga-ui/kit \
 @taiga-ui/layout \
@@ -116,6 +128,8 @@ npm install --force --legacy-peer-deps
 @taiga-ui/prettier-config \
 @taiga-ui/stylelint-config \
 @taiga-ui/styles \
+@taiga-ui/taiga-schematics \
+@taiga-ui/testing \
 @taiga-ui/tsconfig \
 @tailwindcss/postcss \
 @testing-library/jest-dom \
@@ -135,6 +149,7 @@ npm install --force --legacy-peer-deps
 @types/cors \
 @types/d3 \
 @types/dom-navigation \
+@types/dompurify \
 @types/dotenv \
 @types/express \
 @types/glob \
@@ -145,6 +160,9 @@ npm install --force --legacy-peer-deps
 @types/jest \
 @types/jsdom \
 @types/jsonwebtoken \
+@types/leaflet  \
+@types/leaflet-draw \
+@types/leaflet.markercluster \
 @types/live-server \
 @types/loader-utils \
 @types/morgan \
@@ -201,6 +219,7 @@ date-fns \
 dayjs \
 diff \
 domino \
+dompurify \
 dotenv \
 emoji-regex \
 esbuild \
@@ -241,6 +260,10 @@ karma-jasmine-html-reporter \
 karma-requirejs \
 karma-sauce-launcher \
 karma-sourcemap-loader \
+leaflet
+leaflet \
+leaflet-draw@1.0.2 \
+leaflet.markercluster \
 lint-staged \
 live-server \
 magic-string \
@@ -273,6 +296,7 @@ postcss \
 preact \
 preact-render-to-string \
 prettier \
+prettier-plugin-organize-attributes \
 protractor \
 react \
 react-dom \
