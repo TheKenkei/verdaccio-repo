@@ -1,6 +1,6 @@
 rm -rf node_modules package-lock.json ./.cache; 
 
-npm install --force --legacy-peer-deps --cache ./.cache
+npm install --force --legacy-peer-deps --cache ./.cache \
 @actions/core \
 @actions/github \
 @ag-grid-community/client-side-row-model \
@@ -128,7 +128,6 @@ npm install --force --legacy-peer-deps --cache ./.cache
 @taiga-ui/prettier-config \
 @taiga-ui/stylelint-config \
 @taiga-ui/styles \
-@taiga-ui/taiga-schematics \
 @taiga-ui/testing \
 @taiga-ui/tsconfig \
 @tailwindcss/postcss \
