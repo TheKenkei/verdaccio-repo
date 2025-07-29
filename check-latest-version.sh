@@ -71,18 +71,19 @@ compare_versions() {
   
   # Сравниваем версии
   if [ "$verdaccio_version" = "$official_version" ]; then
-    echo -n -e "${GREEN}  ✅ Версия актуальна | ${package}  ($verdaccio_version)${NC}"
+    echo -n -e "${GREEN}  ✅ Версия актуальна"
   else
     echo -n -e "${RED} ❌ Версия: ${package} |  $verdaccio_version | Официальная: $official_version${NC}"
   fi
   
   # Проверка файла архива
   if [ -f "$tgz_file" ]; then
-    echo -e " | ${GREEN}Архив найден${NC}"
+    echo -e " |${GREEN}Архив найден${NC} || ${package} ($verdaccio_version)${NC}"
   else
     echo -e " | ${RED}Архив ОТСУТСТВУЕТ${NC}"
     echo -e "   Ожидаемый путь: $tgz_file"  
     echo -e "Пакет: $package@$verdaccio_version"  >> $ERROR_LOG_TGZ
+    echo -e "Установить:  npm install -d --force --legacy-peer-deps --cache ./.cache/new/$package  $package@$verdaccio_version"  >> $ERROR_LOG_TGZ
     echo -e "Ожидаемый путь: $tgz_file"  >> $ERROR_LOG_TGZ
     
     # Проверка существования директории пакета

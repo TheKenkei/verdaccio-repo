@@ -2,3 +2,4 @@ node_modules/
 .cache
 package-lock.json
 tgz-version-change.log
+package_names.log
