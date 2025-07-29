@@ -1,252 +1,71 @@
-rm -rf node_modules package-lock.json ./.cache; 
+#!/bin/bash
 
+# Цвета для вывода
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
 
+# Пути к файлам
+PACKAGES_FILE="$(dirname "$0")/packages.list"
+VERDACCIO_STORAGE=~/verdaccio/storage
+CACHE_DIR="./.cache"
 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ag-grid-community/client-side-row-model @ag-grid-community/client-side-row-model && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ag-grid-community/core @ag-grid-community/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ag-grid-community/styles @ag-grid-community/styles && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular-builders/custom-webpack @angular-builders/custom-webpack && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular-devkit/build-angular @angular-devkit/build-angular && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular-devkit/core @angular-devkit/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular-devkit/schematics @angular-devkit/schematics && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular-devkit/schematics-cli @angular-devkit/schematics-cli && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/animations @angular/animations && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/cdk @angular/cdk && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/cli @angular/cli && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/common @angular/common && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/compiler @angular/compiler && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/compiler-cli @angular/compiler-cli && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/core @angular/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/forms @angular/forms && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/language-service @angular/language-service && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/localize @angular/localize && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/platform-browser @angular/platform-browser && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/platform-browser-dynamic @angular/platform-browser-dynamic && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/platform-server @angular/platform-server && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/angular/router @angular/router && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/axe-core/playwright @axe-core/playwright && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/bluehalo/ngx-leaflet @bluehalo/ngx-leaflet && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/bluehalo/ngx-leaflet-draw @bluehalo/ngx-leaflet-draw && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/bluehalo/ngx-leaflet-markercluster @bluehalo/ngx-leaflet-markercluster && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/docsearch/css @docsearch/css && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/docsearch/js @docsearch/js && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/emotion/react @emotion/react && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/emotion/styled @emotion/styled && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/faker-js/faker @faker-js/faker && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/fontsource/roboto @fontsource/roboto && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/fortawesome/fontawesome-free @fortawesome/fontawesome-free && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/maskito/angular @maskito/angular && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/maskito/core @maskito/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/maskito/kit @maskito/kit && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/maskito/phone @maskito/phone && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/material-design-icons/svg @material-design-icons/svg && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/mui/icons-material @mui/icons-material && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/mui/material @mui/material && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/mui/x-charts @mui/x-charts && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/mui/x-data-grid @mui/x-data-grid && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/mui/x-date-pickers @mui/x-date-pickers && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/common @ng-web-apis/common && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/intersection-observer @ng-web-apis/intersection-observer && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/mutation-observer @ng-web-apis/mutation-observer && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/platform @ng-web-apis/platform && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/resize-observer @ng-web-apis/resize-observer && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/screen-orientation @ng-web-apis/screen-orientation && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/universal @ng-web-apis/universal && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-web-apis/workers @ng-web-apis/workers && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nguniversal/builders @nguniversal/builders && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nguniversal/express-engine @nguniversal/express-engine && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ngx-translate/core @ngx-translate/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ngx-translate/http-loader @ngx-translate/http-loader && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/novnc/novnc @novnc/novnc && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/angular @nx/angular && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/cypress @nx/cypress && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/devkit @nx/devkit && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/eslint @nx/eslint && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/jest @nx/jest && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/js @nx/js && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/playwright @nx/playwright && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/web @nx/web && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx/workspace @nx/workspace && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/pbe/react-yandex-maps @pbe/react-yandex-maps && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/playwright/test @playwright/test && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/schematics/angular @schematics/angular && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/stackblitz/sdk @stackblitz/sdk && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/swc-node/register @swc-node/register && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/swc/core @swc/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/swc/helpers @swc/helpers && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/addon-charts @taiga-ui/addon-charts && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/addon-commerce @taiga-ui/addon-commerce && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/addon-doc @taiga-ui/addon-doc && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/addon-mobile @taiga-ui/addon-mobile && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/addon-table @taiga-ui/addon-table && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/auto-changelog-config @taiga-ui/auto-changelog-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/browserslist-config @taiga-ui/browserslist-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/cdk @taiga-ui/cdk && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/commitlint-config @taiga-ui/commitlint-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/core @taiga-ui/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/cspell-config @taiga-ui/cspell-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/design-tokens @taiga-ui/design-tokens && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/dompurify @taiga-ui/dompurify && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/editor @taiga-ui/editor && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/eslint-plugin-experience @taiga-ui/eslint-plugin-experience && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/eslint-plugin-experience-next @taiga-ui/eslint-plugin-experience-next && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/event-plugins @taiga-ui/event-plugins && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/i18n @taiga-ui/i18n && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/icons @taiga-ui/icons && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/jest-config @taiga-ui/jest-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/kit @taiga-ui/kit && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/layout @taiga-ui/layout && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/legacy @taiga-ui/legacy && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/polymorpheus @taiga-ui/polymorpheus && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/prettier-config @taiga-ui/prettier-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/release-it-config @taiga-ui/release-it-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/stylelint-config @taiga-ui/stylelint-config && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/styles @taiga-ui/styles && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/syncer @taiga-ui/syncer && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/testing @taiga-ui/testing && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/taiga-ui/tsconfig @taiga-ui/tsconfig && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tailwindcss/aspect-ratio @tailwindcss/aspect-ratio && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tailwindcss/line-clamp @tailwindcss/line-clamp && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tailwindcss/typography @tailwindcss/typography && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/testing-library/jest-dom @testing-library/jest-dom && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/testing-library/react @testing-library/react && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/testing-library/user-event @testing-library/user-event && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/core @tiptap/core && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-blockquote @tiptap/extension-blockquote && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-bold @tiptap/extension-bold && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-bubble-menu @tiptap/extension-bubble-menu && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-bullet-list @tiptap/extension-bullet-list && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-character-count @tiptap/extension-character-count && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-code @tiptap/extension-code && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-code-block @tiptap/extension-code-block && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-details @tiptap/extension-details && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-details-content @tiptap/extension-details-content && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-details-summary @tiptap/extension-details-summary && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-document @tiptap/extension-document && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-dropcursor @tiptap/extension-dropcursor && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-focus @tiptap/extension-focus && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-gapcursor @tiptap/extension-gapcursor && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-hard-break @tiptap/extension-hard-break && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-heading @tiptap/extension-heading && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-highlight @tiptap/extension-highlight && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-history @tiptap/extension-history && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-horizontal-rule @tiptap/extension-horizontal-rule && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-image @tiptap/extension-image && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-italic @tiptap/extension-italic && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-link @tiptap/extension-link && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-list-item @tiptap/extension-list-item && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-ordered-list @tiptap/extension-ordered-list && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-paragraph @tiptap/extension-paragraph && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-placeholder @tiptap/extension-placeholder && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-strike @tiptap/extension-strike && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-subscript @tiptap/extension-subscript && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-superscript @tiptap/extension-superscript && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-table @tiptap/extension-table && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-table-cell @tiptap/extension-table-cell && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-table-header @tiptap/extension-table-header && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-table-of-contents @tiptap/extension-table-of-contents && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-table-row @tiptap/extension-table-row && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-task-item @tiptap/extension-task-item && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-task-list @tiptap/extension-task-list && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-text @tiptap/extension-text && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-text-align @tiptap/extension-text-align && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-text-style @tiptap/extension-text-style && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-underline @tiptap/extension-underline && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/extension-youtube @tiptap/extension-youtube && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/pm @tiptap/pm && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tiptap/starter-kit @tiptap/starter-kit && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/trivago/prettier-plugin-sort-imports @trivago/prettier-plugin-sort-imports && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/bcrypt @types/bcrypt && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/cookie-parser @types/cookie-parser && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/cors @types/cors && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/dompurify @types/dompurify && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/dotenv @types/dotenv && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/express @types/express && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/glob @types/glob && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/jasmine @types/jasmine && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/jest @types/jest && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/jsonwebtoken @types/jsonwebtoken && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/leaflet @types/leaflet && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/leaflet-draw @types/leaflet-draw && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/leaflet.markercluster @types/leaflet.markercluster && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/loader-utils @types/loader-utils && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/markdown-it @types/markdown-it && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/markdown-it-container @types/markdown-it-container && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/morgan @types/morgan && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/node @types/node && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/novnc__novnc @types/novnc__novnc && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/passport-jwt @types/passport-jwt && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/pg @types/pg && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/proj4 @types/proj4 && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/react @types/react && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/react-dom @types/react-dom && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/react-helmet @types/react-helmet && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/sequelize @types/sequelize && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/showdown @types/showdown && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/supertest @types/supertest && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/uuid @types/uuid && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/validator @types/validator && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/types/webpack-env @types/webpack-env && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/typescript-eslint/eslint-plugin @typescript-eslint/eslint-plugin && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/typescript-eslint/parser @typescript-eslint/parser && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/vitejs/plugin-react @vitejs/plugin-react && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/vitest/ui @vitest/ui && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ag-grid-react ag-grid-react && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/autoprefixer autoprefixer && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/axe-playwright axe-playwright && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/axios axios && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/bcrypt bcrypt && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/body-parser body-parser && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cesium cesium && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/chart.js chart.js && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/chartjs-plugin-zoom chartjs-plugin-zoom && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/class-transformer class-transformer && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/class-validator class-validator && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cookie-parser cookie-parser && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cors cors && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cpy-cli cpy-cli && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cypress cypress && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cypress-image-diff-js cypress-image-diff-js && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cypress-plugin-tab cypress-plugin-tab && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/cz-customizable cz-customizable && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/date-fns date-fns && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/dayjs dayjs && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/dompurify dompurify && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/dotenv dotenv && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/eslint eslint && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/eslint-config-prettier eslint-config-prettier && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/eslint-plugin-prettier eslint-plugin-prettier && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/eslint-plugin-react-hooks eslint-plugin-react-hooks && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/eslint-plugin-react-refresh eslint-plugin-react-refresh && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/eslint-plugin-unused-imports eslint-plugin-unused-imports && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/express express && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/husky husky && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/jest jest && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/jest-environment-jsdom jest-environment-jsdom && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/jest-preset-angular jest-preset-angular && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/lint-staged lint-staged && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/lucide-static lucide-static && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/markdown-it markdown-it && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/marked marked && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-morph ng-morph && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ng-packagr ng-packagr && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ngx-highlightjs ngx-highlightjs && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/node-loader node-loader && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/nx nx && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/parse5 parse5 && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/resize-observer-polyfill resize-observer-polyfill && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/rxjs rxjs && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/showdown showdown && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/standard-version standard-version && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/terser-webpack-plugin terser-webpack-plugin && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ts-jest ts-jest && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ts-mockito ts-mockito && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/ts-node ts-node && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/tslib tslib && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/typescript typescript && 
-npm install -d --force --legacy-peer-deps --cache ./.cache/webpack webpack && 
-echo "ALL complete " ; 
+# Очистка перед началом
+echo -e "${BLUE}Очистка node_modules и кэша...${NC}"
+rm -rf node_modules package-lock.json "$CACHE_DIR"
 
+# Проверка существования файла с пакетами
+if [ ! -f "$PACKAGES_FILE" ]; then
+  echo -e "${RED}Файл с пакетами $PACKAGES_FILE не найден${NC}"
+  exit 1
+fi
 
+# Функция для чтения пакетов из файла
+read_packages() {
+  grep -v '^#' "$PACKAGES_FILE" | grep -v '^$'
+}
 
-rm -rf node_modules package-lock.json ./.cache; 
+# Функция для преобразования имени пакета в путь кэша
+get_cache_path() {
+  local package=$1
+  # Заменяем @ и / на пути файловой системы
+  echo "$package" | sed -e 's/^@//' -e 's/\//\//g'
+}
+
+# Функция для установки пакета с кэшированием
+install_package() {
+  local package=$1
+  local cache_path="$CACHE_DIR/$(get_cache_path "$package")"
+  
+  echo -e "${BLUE}Установка $package...${NC}"
+  mkdir -p "$cache_path"
+  
+  npm install --force --legacy-peer-deps --cache "$cache_path" "$package"
+  
+  if [ $? -eq 0 ]; then
+    echo -e "${GREEN}✅ $package успешно установлен${NC}"
+  else
+    echo -e "${RED}❌ Ошибка при установке $package${NC}"
+  fi
+}
+
+# Основной код
+echo -e "${BLUE}Чтение пакетов из $PACKAGES_FILE...${NC}"
+packages=()
+while IFS= read -r line; do
+  packages+=("$line")
+done < <(read_packages)
+
+if [ ${#packages[@]} -eq 0 ]; then
+  echo -e "${YELLOW}В файле не найдено ни одного пакета${NC}"
+  exit 1
+fi
+
+# Установка всех пакетов
+for pkg in "${packages[@]}"; do
+  install_package "$pkg"
+done
+
+echo -e "${GREEN}Установка завершена. Всего установлено ${#packages[@]} пакетов${NC}"
