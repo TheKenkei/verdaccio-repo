@@ -58,7 +58,7 @@
 @ngrx/operators
 @ngrx/router-store
 @ngrx/schematics
-@ngrx/signals 
+@ngrx/signals
 @ngrx/store
 @ngrx/store-devtools
 @nguniversal/builders
