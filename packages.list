@@ -49,6 +49,18 @@
 @ng-web-apis/screen-orientation
 @ng-web-apis/universal
 @ng-web-apis/workers
+@ngrx/component
+@ngrx/component-store
+@ngrx/data
+@ngrx/effects
+@ngrx/entity
+@ngrx/eslint-plugin
+@ngrx/operators
+@ngrx/router-store
+@ngrx/schematics
+@ngrx/signals 
+@ngrx/store
+@ngrx/store-devtools
 @nguniversal/builders
 @nguniversal/express-engine
 @ngx-translate/core
@@ -193,6 +205,7 @@ axe-playwright
 axios
 bcrypt
 body-parser
+cacheable
 cesium
 chart.js
 chartjs-plugin-zoom
