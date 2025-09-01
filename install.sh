@@ -42,7 +42,7 @@ install_package() {
   echo -e "${BLUE}Установка $package...${NC}"
   mkdir -p "$cache_path"
   
-  npm install --force --legacy-peer-deps --cache "$cache_path" "$package"
+  npm install --force --legacy-peer-deps --cache "$cache_path" "$package"@latest
   
   if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ $package успешно установлен${NC}"
