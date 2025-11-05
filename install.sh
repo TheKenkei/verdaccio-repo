@@ -41,6 +41,32 @@ install_package() {
   
   echo -e "${BLUE}Установка $package...${NC}"
   mkdir -p "$cache_path"
+
+  echo '
+  {
+  "name": "verdacio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheKenkei/verdaccio-repo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TheKenkei/verdaccio-repo/issues"
+  },
+  "homepage": "https://github.com/TheKenkei/verdaccio-repo#readme",
+  "dependencies": {
+  }
+}'  > ./package.json
+
   
   npm install --force --legacy-peer-deps --cache "$cache_path" "$package"@latest
   
