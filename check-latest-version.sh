@@ -10,7 +10,7 @@ NC='\033[0m' # No Color
 
 # Пути к файлам
 PACKAGES_FILE="$(dirname "$0")/packages.list"
-VERDACCIO_STORAGE=~/verdaccio
+VERDACCIO_STORAGE=~/verdaccio/storage
 ERROR_LOG_TGZ="./tgz-version-change.log" 
 
 

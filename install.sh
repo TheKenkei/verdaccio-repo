@@ -14,7 +14,7 @@ CACHE_DIR="./.cache"
 
 # Очистка перед началом
 echo -e "${BLUE}Очистка node_modules и кэша...${NC}"
-rm -rf node_modules package-lock.json "$CACHE_DIR"
+rm -rf node_modules package-lock.json "$CACHE_DIR" pnpm-lock.yaml
 
 # Проверка существования файла с пакетами
 if [ ! -f "$PACKAGES_FILE" ]; then
@@ -68,7 +68,8 @@ install_package() {
 }'  > ./package.json
 
   
-  npm install --force --legacy-peer-deps --cache "$cache_path" "$package"@latest
+npm install --force --legacy-peer-deps --cache "$cache_path" "$package"@latest
+#  pnpm add "$package"@latest --force --config.ignore-scripts=true
   
   if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ $package успешно установлен${NC}"
