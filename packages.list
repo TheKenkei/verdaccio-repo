@@ -1,4 +1,3 @@
-
 @ag-grid-community/client-side-row-model
 @ag-grid-community/core
 @ag-grid-community/styles
@@ -25,6 +24,7 @@
 @bluehalo/ngx-leaflet
 @bluehalo/ngx-leaflet-draw
 @bluehalo/ngx-leaflet-markercluster
+@cmfcmf/docusaurus-search-local
 @crowdin/cli
 @crowdin/cli
 @crowdin/crowdin-api-client

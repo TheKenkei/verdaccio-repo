@@ -69,7 +69,7 @@ install_package() {
 
   
 npm install --force --legacy-peer-deps --cache "$cache_path" "$package"@latest
-#  pnpm add "$package"@latest --force --config.ignore-scripts=true
+# pnpm add "$package"@latest --force --config.ignore-scripts=true
   
   if [ $? -eq 0 ]; then
     echo -e "${GREEN}✅ $package успешно установлен${NC}"
