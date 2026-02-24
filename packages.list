@@ -314,6 +314,7 @@ lodash
 lucide-static
 markdown-it
 marked
+monaco-editor 
 netlify-plugin-cache
 ng-morph
 ng-packagr
