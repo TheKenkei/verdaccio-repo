@@ -1,5 +1,6 @@
 node_modules/ 
 .cache
 package-lock.json
+pnpm-lock.yaml
 tgz-version-change.log
 package_names.log
